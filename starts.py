@@ -51,11 +51,3 @@ class Euro(Currency):
 	#def __init__(self, amount):
 	#	super().__init__(amount)
 
-bill_us = Dollar(1)
-bill_eu = Euro(1)
-print(bill_us.rub_value)
-print(bill_us.prev_rub_value)
-print(bill_us.diff)
-print(bill_eu.rub_value)
-print(bill_eu.prev_rub_value)
-print(bill_eu.diff)
