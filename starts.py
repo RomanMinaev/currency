@@ -54,3 +54,6 @@ class Euro(Currency):
 	#def __init__(self, amount):
 	#	super().__init__(amount)
 
+
+#commit test
+
