@@ -40,6 +40,9 @@ class Currency(ABC):  # abstract class, describes currency
 		prev_rub_value = cb_dict['Valute'][self.CHAR_CODE]['Previous']
 		return [rub_value, prev_rub_value]
 
+	def update():
+		get_daily_json()
+
 
 class Dollar(Currency):
 	CHAR_CODE = 'USD'
