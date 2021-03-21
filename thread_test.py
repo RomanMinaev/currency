@@ -1,4 +1,16 @@
 from datetime import datetime
+import threading
+from functools import wraps
+
+def timer(func):
+	@wraps(func)
+	def wrap(*args, **kwargs):
+		start = datetime.utcnow()
+		func(*args, **kwargs)
+		end = datetime.utcnow()
+		print(f'{func.__name__} took {end-start} to run.')
+		return func(*args, **kwargs)
+	return wrap
 
 def read_ints(path):
 	lst = []
@@ -7,6 +19,7 @@ def read_ints(path):
 			lst.append(int(line))
 	return lst
 
+@timer
 def count_three_sum(ints):
 	print(f'started {count_three_sum.__name__}')
 
@@ -26,8 +39,13 @@ def count_three_sum(ints):
 
 if __name__ == '__main__':
 	print('Starting __main__')
+
 	start = datetime.utcnow()
 	ints = read_ints(r'for_thread_test/1Kints.txt')
-	count_three_sum(ints)
+
+	t1 = threading.Thread(target=count_three_sum, args=(ints,))
+	t1.start()
+
+	print('__main__ loop continues...')
 	end = datetime.utcnow()
 	print(f'__main__ ended. {end - start}')
