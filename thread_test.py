@@ -48,4 +48,6 @@ if __name__ == '__main__':
 	print('Counter is in thread. __main__ loop continues...')
 	end = datetime.utcnow()
 	t1.join()
-	print(f'__main__ ended. {end - start}')
+	true_end = datetime.utcnow()
+	print(f'__main__ ended. {end - start}\n'
+		f'__main__ TRULY ended at {true_end - start}')
